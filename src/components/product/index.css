@@ -1,0 +1,28 @@
+.add-product-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+input {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.btn-add-product {
+  padding: 0.75rem;
+  background-color: #28a745;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
