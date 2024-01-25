@@ -228,6 +228,7 @@ const OrderManagement = () => {
             <CTableHead>
               <CTableRow>
                 <CTableHeaderCell>ID</CTableHeaderCell>
+                <CTableHeaderCell>Tài khoản</CTableHeaderCell>
                 <CTableHeaderCell>Tên</CTableHeaderCell>
                 <CTableHeaderCell>Trạng thái đơn hàng</CTableHeaderCell>
                 <CTableHeaderCell>Số điện thoại</CTableHeaderCell>
@@ -240,6 +241,7 @@ const OrderManagement = () => {
               {data?.orders?.map((order) => (
                 <CTableRow key={order._id}>
                   <CTableDataCell>{order._id}</CTableDataCell>
+                  <CTableDataCell>{order.user.name}</CTableDataCell>
                   <CTableDataCell>{order.firstName + " " + order.lastName}</CTableDataCell>
                   <CTableDataCell>{OrderStatus[order.status]}</CTableDataCell>
                   <CTableDataCell>{order.phone}</CTableDataCell>
@@ -280,7 +282,6 @@ const OrderManagement = () => {
         />
       </div>
       <ToastContainer />
-
     </div>
   );
 };

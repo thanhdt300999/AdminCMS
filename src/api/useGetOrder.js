@@ -1,10 +1,7 @@
 import {useQuery} from '@tanstack/react-query'
 import axios from "axios";
+import {AxiosInstance} from "./useGetUser";
 
-export const AxiosInstance = axios.create({
-  timeout: 30000,
-  baseURL: 'http://localhost:4000',
-})
 const fetcher = async (params) => {
   const rs = await AxiosInstance.get('/api/admin/get-orders', {params})
   return rs.data

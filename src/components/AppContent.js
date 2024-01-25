@@ -4,9 +4,12 @@ import { CContainer, CSpinner } from '@coreui/react'
 
 // routes config
 import routes from '../routes'
+import {getAccessToken} from "../utils";
 
 const AppContent = () => {
-  const isAuth = true
+
+  const isAuth = !!getAccessToken()
+
   return (
     <CContainer className="px-4" lg>
       <Suspense fallback={<CSpinner color="primary" />}>

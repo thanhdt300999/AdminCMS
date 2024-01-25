@@ -121,7 +121,7 @@ const ProductManagement = () => {
         resetForm()
         queryClient.refetchQueries(['get-all-products'])
       }).catch((e) => {
-        toast(e.message)
+        toast(e?.response?.data?.message)
       })
     }
     if (isEdit) {
@@ -187,6 +187,11 @@ const ProductManagement = () => {
       setValue('stock', productDetail?.stock)
       setValue('author', productDetail?.author)
       setValue('description', productDetail?.description)
+      setValue('width', productDetail?.width)
+      setValue('height', productDetail?.height)
+      setValue('length', productDetail?.length)
+      setValue('weight', productDetail?.weight)
+
     }
   }, [isEdit, data?.products]);
 
@@ -273,7 +278,7 @@ const ProductManagement = () => {
                     },
                     max: 100,
                     min: 0
-                  })} type="text" placeholder="Nhập % giảm giá" />
+                  })} type="number" placeholder="Nhập % giảm giá" />
                 </Form.Group>
                 {errors?.salePercent && <p style={{color: 'red'}}>{errors?.salePercent?.message}</p>}
 
@@ -293,9 +298,7 @@ const ProductManagement = () => {
                       },
                       onChange: (value) => {
                         console.log(value)
-                      },
-                      max: 100,
-                      min: 0
+                      }
                     })}
                   >
                     <option value=""></option>
@@ -327,6 +330,54 @@ const ProductManagement = () => {
                   })} type="text" placeholder="Nhập tên tác giả" />
                 </Form.Group>
                 {errors?.author && <p style={{color: 'red'}}>{errors?.author?.message}</p>}
+
+                <Form.Group  controlId="formBasicPassword">
+                  <Form.Label>Cân nặng (gram)</Form.Label>
+                  <Form.Control {...register("weight", {
+                    required: {
+                      value: true,
+                      message: "Trường này là bắt buộc"
+                    },
+                    min: 0
+                  })} type="number" placeholder="Nhập cân nặng sản phẩm" />
+                </Form.Group>
+                {errors?.weight && <p style={{color: 'red'}}>{errors?.weight?.message}</p>}
+
+                <Form.Group  controlId="formBasicPassword">
+                  <Form.Label>Chiều dài (cm)</Form.Label>
+                  <Form.Control {...register("height", {
+                    required: {
+                      value: true,
+                      message: "Trường này là bắt buộc"
+                    },
+                    min: 0
+                  })} type="number" placeholder="Nhập chiều dài sản phẩm" />
+                </Form.Group>
+                {errors?.height && <p style={{color: 'red'}}>{errors?.height?.message}</p>}
+
+                <Form.Group  controlId="formBasicPassword">
+                  <Form.Label>Chiều rộng (cm)</Form.Label>
+                  <Form.Control {...register("width", {
+                    required: {
+                      value: true,
+                      message: "Trường này là bắt buộc"
+                    },
+                    min: 0
+                  })} type="number" placeholder="Nhập chiều rộng sản phẩm" />
+                </Form.Group>
+                {errors?.width && <p style={{color: 'red'}}>{errors?.width?.message}</p>}
+
+                <Form.Group  controlId="formBasicPassword">
+                  <Form.Label>Chiều cao (cm)</Form.Label>
+                  <Form.Control {...register("length", {
+                    required: {
+                      value: true,
+                      message: "Trường này là bắt buộc"
+                    },
+                    min: 0
+                  })} type="number" placeholder="Nhập chiều cao sản phẩm" />
+                </Form.Group>
+                {errors?.length && <p style={{color: 'red'}}>{errors?.length?.message}</p>}
 
                 <Form.Group  controlId="formBasicPassword">
                   <Form.Label>Mô tả</Form.Label>
